@@ -1,0 +1,28 @@
+1. Open CMD → type:
+    spark-shell
+
+2. Open browser → go to:
+    http://localhost:4040
+
+3. Create input.txt with sample text at:
+    C:/Users/<username>/Desktop/input.txt
+
+4. Load file in Spark shell:
+    var inputfile = sc.textFile("C:/Users/<username>/Desktop/input.txt")
+
+5. Count words:
+    val counts = inputfile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey(_ + _)
+
+6. Show results:
+    counts.collect()
+
+7. Save output:
+    counts.saveAsTextFile("C:/Users/<username>/Desktop/output")
+
+8. If save fails → download winutils.exe & hadoop.dll from:
+    https://github.com/cdarlint/winutils/tree/master/hadoop-3.3.5/bin
+
+9. Paste both files into:
+    C:\Spark\spark-3.5.6-bin-hadoop3\bin
+
+10. Restart CMD and repeat steps.

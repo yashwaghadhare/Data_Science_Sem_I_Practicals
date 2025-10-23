@@ -1,0 +1,20 @@
+Step 1: Install JDK 8
+    Download JDK 1.8.0_202 from Oracle website.
+    Install it.
+    Set Environment Variables:
+        JAVA_HOME = C:\Program Files\Java\jdk1.8.0_202
+        Add to Path: C:\Program Files\Java\jdk1.8.0_202\bin
+    Check in CMD: java -version
+
+Step 2: Install Spark
+    Download Spark 3.5.6 (Hadoop 3.4+) from spark.apache.org.
+    Extract to: C:\Spark\spark-3.5.6-bin-hadoop3
+    Set Environment Variables:
+        SPARK_HOME = C:\Spark\spark-3.5.6-bin-hadoop3
+        HADOOP_HOME = C:\Spark\spark-3.5.6-bin-hadoop3
+    Add to Path: C:\Spark\spark-3.5.6-bin-hadoop3\bin
+
+Step 3: Verify Installation
+    Open CMD.
+    Type: spark-shell
+    If it shows Spark version and link localhost, Spark is installed successfully.
