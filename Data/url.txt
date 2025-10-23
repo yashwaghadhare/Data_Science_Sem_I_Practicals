@@ -1,0 +1,1 @@
+https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=1min&apikey=YOUR_API_KEY
