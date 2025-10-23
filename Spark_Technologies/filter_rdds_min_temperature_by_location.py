@@ -1,36 +1,32 @@
-# !pip install pyspark
-
 from pyspark import SparkConf, SparkContext
 
-# Create Spark configuration and context
-conf = SparkConf().setMaster("local").setAppName("MinMaxTemperatures")
-sc = SparkContext(conf = conf)
+# Create Spark context
+sc = SparkContext("local", "MinMaxTemperatures")
 
-# Function to parse each line of CSV
+# Function to parse CSV line
 def parseLine(line):
     fields = line.split(',')
     stationID = fields[0]
     entryType = fields[2]
-    temperature = float(fields[3]) * 0.1 * (9.0 / 5.0) + 32.0
-    return (stationID, entryType, temperature)
+    # Convert temperature to Fahrenheit
+    tempF = float(fields[3]) * 0.1 * 9/5 + 32
+    return (stationID, entryType, tempF)
 
-# Read CSV file and parse lines
+# Read and parse CSV
 lines = sc.textFile("1800.csv")
-parsedLines = lines.map(parseLine)
+parsed = lines.map(parseLine)
 
-# Find Minimum Temperatures
-minTemps = parsedLines.filter(lambda x: "TMIN" in x[1])
-stationTemps = minTemps.map(lambda x: (x[0], x[2]))
-minTemps = stationTemps.reduceByKey(lambda x, y: min(x, y))
-results = minTemps.collect()
-for result in results:
-    print(result[0] + "\t{:.2f}F".format(result[1]))
+# Function to compute min or max temperature
+def computeTemp(entryType, func):
+    temps = parsed.filter(lambda x: x[1] == entryType)\
+                  .map(lambda x: (x[0], x[2]))\
+                  .reduceByKey(func)
+    return temps.collect()
 
-# Find Maximum Temperatures
-parsedLines = lines.map(parseLine)
-maxTemps = parsedLines.filter(lambda x: "TMAX" in x[1])
-stationTemps = maxTemps.map(lambda x: (x[0], x[2]))
-maxTemps = stationTemps.reduceByKey(lambda x, y: max(x, y))
-results = maxTemps.collect()
-for result in results:
-    print(result[0] + "\t{:.2f}F".format(result[1]))
+# Minimum temperatures
+for station, temp in computeTemp("TMIN", min):
+    print(f"{station}\t{temp:.2f}F")
+
+# Maximum temperatures
+for station, temp in computeTemp("TMAX", max):
+    print(f"{station}\t{temp:.2f}F")

@@ -1,40 +1,28 @@
 from pyspark.sql import SparkSession
 
-# Create SparkSession and SparkContext
-spark = SparkSession.builder.appName("BroadcastMovieNames").getOrCreate()
+# Start Spark session
+spark = SparkSession.builder.appName("BroadcastMovies").getOrCreate()
 sc = spark.sparkContext
 
-# Function to load movie names into a dictionary
-def loadMovieNames():
-    movieNames = {}
-    with open("movies.dat", encoding="ISO-8859-1") as f:
-        for line in f:
-            fields = line.strip().split("::")
-            if len(fields) >= 2:
-                movieId = int(fields[0])
-                movieName = fields[1]
-                movieNames[movieId] = movieName
-    return movieNames
+# Load movie names into a dictionary and broadcast
+movieNames = {}
+with open("movies.dat", encoding="ISO-8859-1") as f:
+    for line in f:
+        movieId, title = line.strip().split("::")[:2]
+        movieNames[int(movieId)] = title
+movieNamesBr = sc.broadcast(movieNames)
 
-# Load movie names and broadcast to all worker nodes
-movieNamesDict = loadMovieNames()
-movieNamesBroadcast = sc.broadcast(movieNamesDict)
+# Load and parse ratings
+ratings = sc.textFile("ratings.dat") \
+            .map(lambda l: l.split("::")) \
+            .map(lambda f: (int(f[0]), int(f[1]), float(f[2])))
 
-# Load ratings data
-ratings = sc.textFile("ratings.dat")
-
-# Parse ratings into (userID, movieID, rating)
-ratingsParsed = ratings.map(lambda l: l.split("::")) \
-                       .map(lambda f: (int(f[0]), int(f[1]), float(f[2])))
-
-# Map ratings to include movie names using broadcast variable
-ratingsWithNames = ratingsParsed.map(
-    lambda x: (x[0], movieNamesBroadcast.value.get(x[1], "Unknown"), x[2])
-)
+# Add movie names using broadcast variable
+ratingsWithNames = ratings.map(lambda x: (x[0], movieNamesBr.value.get(x[1], "Unknown"), x[2]))
 
 # Show first 10 results
-for result in ratingsWithNames.take(10):
-    print(result)
+for r in ratingsWithNames.take(10):
+    print(r)
 
-# Stop SparkSession
+# Stop Spark session
 spark.stop()
