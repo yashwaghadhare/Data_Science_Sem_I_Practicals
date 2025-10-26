@@ -1,0 +1,27 @@
+Step 1: Prepare the Data File
+- Open Excel or any spreadsheet software
+- Enter data with clear column headers (e.g., Region, Sales, Profit)
+- Ensure each row represents one record
+- Click File → Save As
+- Choose CSV (Comma delimited) as the file format
+- Save the file to an easily accessible location
+Step 2: Sort Your Data
+- Drag the field you want to visualize into Rows or Columns
+- Click the Sort icon in the toolbar (or right-click the field → Sort)
+- Choose sorting method:
+  * Ascending / Descending by a measure
+  * Manual sort (drag items to reorder)
+Step 3: Filter Your Data
+- Click the drop-down arrow on the field you want to filter (in Rows, Columns, or Data pane)
+- Select Filter… from the menu
+- In the Filter dialog box, choose filter type and apply
+- Click OK to confirm
+- (Optional) To enable interactive filters:
+  * Click the field’s drop-down arrow in the Filters shelf → Show Filter
+Step 4: Build a Dashboard
+- Click “New Dashboard” at the bottom tab bar
+- Drag worksheets onto the dashboard canvas
+- Adjust layout, add interactivity (filters, actions, highlights)
+Step 5: Publish to Tableau Cloud
+- Click File → Save to Tableau Public
+- After publishing, Tableau automatically opens your dashboard in Chrome

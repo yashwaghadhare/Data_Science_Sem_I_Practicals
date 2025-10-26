@@ -1,0 +1,19 @@
+# Import pandas
+import pandas as pd
+# Load the Iris dataset
+df = pd.read_csv("Iris.csv")
+# Show first 5 rows
+print("Original Data:")
+print(df.head())
+# Check for missing values
+print("\nMissing Values:")
+print(df.isnull().sum())
+# Remove duplicates
+df.drop_duplicates(inplace=True)
+# Create a new column: Petal Area
+df['Petal_Area'] = df['PetalLengthCm'] * df['PetalWidthCm']
+# Encode the 'Species' column
+df['Species_encoded'] = df['Species'].astype('category').cat.codes
+# Show cleaned data
+print("\nCleaned Data:")
+print(df.head())

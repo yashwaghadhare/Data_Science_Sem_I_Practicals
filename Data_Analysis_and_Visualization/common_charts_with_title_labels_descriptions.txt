@@ -1,0 +1,31 @@
+Step 1: Prepare the Data File
+- Open Excel or any spreadsheet software
+- Enter data with clear column headers (e.g., Region, Sales, Profit)
+- Ensure each row represents one record
+- Click File → Save As
+- Choose CSV (Comma delimited) as the file format
+- Save the file to an easily accessible location
+Step 2: Open Tableau Desktop
+- Launch Tableau Desktop
+- On the start page, click “Microsoft Excel” or “Text File” (based on your saved format)
+- Locate and open your CSV file
+- Tableau loads data into the Data Source tab
+- Click “Sheet 1” at the bottom to start building charts
+Step 3: Create Charts and Graphs
+- In the sheet view, locate fields (Dimensions and Measures) in the left sidebar
+- Drag a Dimension (e.g., Region) → Columns shelf
+- Drag a Measure (e.g., Sales) → Rows shelf
+- Tableau auto-generates a chart (default: Bar Chart)
+- Use the “Show Me” panel to change chart type
+- Add more Dimensions/Measures as needed for richer visuals
+Step 4: Customize the Chart
+- Change chart type using Marks card or “Show Me” panel
+- Enhance visuals by dragging fields to:
+  * Color
+  * Label
+  * Tooltip
+  * Size
+  * Shape
+- Sort and filter data using Sort icon and Filters shelf
+- Edit titles and labels (click on titles or right-click axes)
+- Use Format pane to adjust fonts, gridlines, and layout

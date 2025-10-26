@@ -1,0 +1,21 @@
+
+Step 1: Connect API to Power BI
+- Open Power BI Desktop
+- Navigate to Home → Get Data → Web
+- In the From Web dialog box, paste the URL:
+  https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TSLA&interval=1min&apikey=YOUR_API_KEY
+Step 2: Use Transform Data
+- In Applied Steps, click Convert to Table
+- Expand the Record section
+- Right-click the desired record → Drill Down
+- Convert the drilled-down record into a table
+- Expand the Value column to display data
+- Rename columns to: open, high, low, close, volume
+Step 3: Build a Real-Time Dashboard
+- Create visualizations using the transformed data:
+  * Line charts for price movements (Open, High, Low, Close)
+  * Column charts for trading volume
+Step 4: Enable Automatic Refresh
+- Publish the Power BI report to Power BI Service
+- Go to Dataset Settings
+- Configure Scheduled Refresh (every 5–10 minutes)

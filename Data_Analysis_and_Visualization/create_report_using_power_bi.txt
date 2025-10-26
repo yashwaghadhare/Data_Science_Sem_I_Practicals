@@ -1,0 +1,30 @@
+Step 1: Prepare Data
+- Create data in Excel
+- Save as .CSV or .TXT
+
+Step 2: Open Power BI Desktop
+- Launch Power BI Desktop
+
+Step 3: Load Data
+- Click Get Data → Text/CSV
+- Browse and select your file
+- Click Load
+
+Step 4: Transform Data (Optional)
+- Click Transform Data
+- In Power Query Editor:
+  * Rename columns
+  * Change data types
+  * Remove null/unneeded columns
+- Click Close & Apply
+
+Step 5: Build Visuals
+- Go to Report View
+- Drag fields to canvas
+- Choose chart types:
+  * Bar Chart – Compare categories
+  * Pie Chart – Show proportions
+  * Line Chart – Trends over time
+
+Step 6: Save Report
+- Go to File → Save As → PBI.pbix

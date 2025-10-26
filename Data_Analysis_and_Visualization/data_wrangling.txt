@@ -1,0 +1,19 @@
+import pandas as pd
+# Load the dataset
+df = pd.read_csv("Iris.csv")
+# Show basic info
+print("Shape:", df.shape)
+print(df.head())
+# Check for missing values
+print("\nMissing Values:")
+print(df.isnull().sum())
+# Remove missing and duplicate rows
+df.dropna(inplace=True)
+df.drop_duplicates(inplace=True)
+# Convert 'Species' to category
+df['Species'] = df['Species'].astype('category')
+# Rename columns to lowercase
+df.columns = df.columns.str.lower()
+# Show cleaned data
+print("\nCleaned Data:")
+print(df.head())

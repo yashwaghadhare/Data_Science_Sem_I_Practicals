@@ -1,0 +1,79 @@
+Step 1: Prepare Data
+- Create data in Excel
+- Save as .CSV or .TXT
+Step 2: Open Power BI Desktop
+- Launch Power BI Desktop
+Step 3: Load Data
+- Click Get Data → Text/CSV
+- Browse and select your file
+- Click Load
+Step 4: Transform Data (Optional)
+- Click Transform Data
+- In Power Query Editor:
+  * Rename columns
+  * Change data types
+  * Remove null/unneeded columns
+- Click Close & Apply
+Step 5: Build Visuals
+- Go to Report View
+- Drag fields to canvas
+- Choose chart types:
+  * Bar Chart – Compare categories
+  * Pie Chart – Show proportions
+  * Line Chart – Trends over time
+Step 6: Create Visualizations
+- Go to Report View
+- Select a visual from the Visualizations pane
+- Drag fields from the Fields pane to build visuals
+Step 7: Add Interactivity
+- Add Slicers to filter data (e.g., Region, Category, Year)
+- Use Tooltips to show extra info on hover
+Step 8: Format Visuals
+- Customize colors, labels, titles, and fonts
+- Apply a consistent theme for a clean look
+- Rename each page and arrange visuals clearly
+Step 9: Load Data (Detailed Example)
+- Open Power BI Desktop
+- Click Home → Get Data → Excel/CSV
+- Import the “Sample Superstore” dataset
+- Load the data into Power BI
+Step 10: Clean & Prepare Data
+- Open Transform Data (Power Query Editor)
+- Check:
+  * Correct data types (Date, Text, Number)
+  * Null values or errors
+- Create a new column for Profit Margin:
+  Profit_Margin = ((Orders[Profit] / Orders[Sales]) * 100)
+Step 11: Create Required Visuals
+1. Sales vs Profit by Region
+   - Visual: Clustered Column Chart
+   - Axis: Region
+   - Values: Sales, Profit
+2. Profit Margin by Sub-Category
+   - Visual: Bar Chart
+   - Axis: Sub-Category
+   - Value: Profit Margin
+3. Impact of Discounts on Profit
+   - Visual: Scatter Plot
+   - X-Axis: Discount
+   - Y-Axis: Profit
+   - Size: Sales
+   - Details: Sub-Category
+4. Sales & Profit Over Time
+   - Visual: Line Chart
+   - Axis: Order Date (Month format)
+   - Values: Sales, Profit
+Step 12: Format & Style
+- Add titles and data labels
+- Use consistent color themes
+- Add slicers (e.g., Region or Category)
+Step 13: Copy Visuals from Power BI
+- Click a visual in Power BI
+- Use Snipping Tool or Export as Image (Power BI Service)
+- Paste the visual into your presentation slide
+Step 14: Final Touch
+- Add report title and subtitle
+- Summarize key insights in bullet points
+- Provide actionable recommendations
+Step 15: Save Report
+- Go to File → Save As → PBI.pbix

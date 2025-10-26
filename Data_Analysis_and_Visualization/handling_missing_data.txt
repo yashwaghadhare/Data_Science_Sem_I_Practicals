@@ -1,0 +1,14 @@
+import pandas as pd
+# Load CSV
+df = pd.read_csv("Iris.csv")
+print("Original Data:\n", df.head(), "\n")
+# Fill missing numeric values with mean
+df.fillna(df.mean(), inplace=True)
+# Fill missing 'Species' with 'unknown' and clean strings
+df['Species'] = df['Species'].fillna('unknown').str.lower().str.strip()
+# Remove duplicates
+df.drop_duplicates(inplace=True)
+# Clean column names
+df.columns = df.columns.str.lower().str.replace(" ", "_")
+# Show cleaned data
+print("Cleaned Data:\n", df.head())
