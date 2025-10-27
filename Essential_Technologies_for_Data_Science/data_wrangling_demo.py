@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("Data/Iris.csv")
+df = pd.read_csv("Iris.csv")
 print(df.head())
 print(df.shape)
 print(df.columns.tolist())
