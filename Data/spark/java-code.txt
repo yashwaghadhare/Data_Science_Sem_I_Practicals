@@ -1,0 +1,16 @@
+
+!apt-get install openjdk-11-jdk -qq > /dev/null
+
+!wget -q --show-progress https://archive.apache.org/dist/spark/spark-3.5.3/spark-3.5.3-bin-hadoop3.tgz
+
+!tar -xzf spark-3.5.3-bin-hadoop3.tgz
+
+import os
+os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-11-openjdk-amd64"
+os.environ["SPARK_HOME"] = "/content/spark-3.5.3-bin-hadoop3"
+os.environ["PATH"] += f":{os.environ['SPARK_HOME']}/bin:{os.environ['JAVA_HOME']}/bin"
+
+!pip install -q findspark pyspark
+
+import findspark
+findspark.init()
