@@ -1,0 +1,1 @@
+Machine learning is the process of optimizing the model so that it can predict the correct response based on the training data samples. Assuming the training data is of high quality, the more training samples the machine learning algorithm receives, the more accurate the model will become.
